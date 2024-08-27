@@ -1,9 +1,9 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
   align-items: center;
-  padding: 6rem;
+  padding: 1rem;
   min-height: 100vh;
 }
 
@@ -17,6 +17,20 @@
   z-index: 2;
   font-family: var(--font-mono);
 }
+
+.imageContainer, .numberContainer {
+  width: 100%; /* Ensure consistent width */
+  height: 100%; /* Ensure consistent height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.numberContainer span {
+  font-size: 115px; /* Set font size */
+}
+
+
 
 .description a {
   display: flex;
@@ -47,11 +61,16 @@
 }
 
 .card {
-  padding: 1rem 1.2rem;
-  border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
+  cursor: pointer; /* Ensure cursor changes to pointer on hover */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  position: relative;
 }
 
 .card span {
