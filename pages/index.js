@@ -26,7 +26,7 @@ export default function Home() {
   }
 
   const [list, setList] = useState([]);
-  const [visibilities, setVisibilities] = useState(Array(12).fill(false));
+  const [visibilities, setVisibilities] = useState(Array(18).fill(false));
   const [count, setCount] = useState(0);
   const [toggleModal, setToggleModal] = useState(false);
 
@@ -34,8 +34,8 @@ export default function Home() {
 
   useEffect(() => {
     const tempList = [];
-    while (tempList.length < 12) {
-      let rdm = Math.floor(Math.random() * 6) + 1;
+    while (tempList.length < 18) {
+      let rdm = Math.floor(Math.random() * 9) + 1;
       if (!ifOccurTwice(tempList, rdm)) {
         tempList.push(rdm);
       }
@@ -45,14 +45,14 @@ export default function Home() {
 
   function buttonClick() {
     const tempList = [];
-    while (tempList.length < 12) {
-      let rdm = Math.floor(Math.random() * 6) + 1;
+    while (tempList.length < 18) {
+      let rdm = Math.floor(Math.random() * 9) + 1;
       if (!ifOccurTwice(tempList, rdm)) {
         tempList.push(rdm);
       }
     }
     setList(tempList);
-    setVisibilities(Array(12).fill(false));
+    setVisibilities(Array(18).fill(false));
     setCount(0);
     setToggleModal(false);
   
@@ -122,26 +122,35 @@ useEffect(() => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="d-flex justify-content-center" style={{ marginTop: '50px' }}>
-        <Button variant="outline-success" onClick={buttonClick} className="fw-bold fs-5">Restart</Button>
-      </div>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div style={{ marginTop: '30px' }}> 
-          <CountClick count={count}/>
+      <div   
+      style={{
+        backgroundImage: `url("/background.jpg")`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+      }}
+>
+        <div className="d-flex justify-content-center" style={{ marginTop: '50px' }}>
+          <Button variant="outline-success" onClick={buttonClick} className="fw-bold fs-5">Restart</Button>
         </div>
-        <Container style={{ marginTop: '50px' }}>
-          <Row>
-            {list.map((number, index) => (
-              <Col key={index} xs={6} sm={4} md={3} lg={2}>
-                <div onClick={() => cardClick(index)}>
-                  <VisItem vis={visibilities[index]} num={number}/>
-                </div>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-        {toggleModal && <Complete count={count}/>}
-      </main>
+        <main className={`${styles.main} ${inter.className}`}>
+          <div style={{ marginTop: '30px' }}> 
+            <CountClick count={count}/>
+          </div>
+          <Container style={{ marginTop: '50px' }}>
+            <Row>
+              {list.map((number, index) => (
+                <Col key={index} xs={6} sm={4} md={3} lg={2}>
+                  <div onClick={() => cardClick(index)}>
+                    <VisItem vis={visibilities[index]} num={number}/>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+          {toggleModal && <Complete count={count}/>}
+        </main>
+      </div>
     </>
   );
 }

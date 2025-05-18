@@ -7,10 +7,15 @@ export default function NumCard({num}) {
 
     return (
         <Card className="styles.card">
-
-            <div className={`${styles.numberContainer} mt-5 mb-5`}>
-                <span>{num}</span>
-            </div>
+            <div className={styles.imageContainer}>
+                <Image 
+                    src={`/poker${num}.png`} 
+                    alt="Poker"
+                    layout="responsive"
+                    width={100}
+                    height={100}
+                />
+            </div> 
         </Card>
     )
 }
